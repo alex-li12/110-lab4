@@ -43,6 +43,8 @@ class App implements ScreenSwitcher {
 
 		// Add all screen groups to the layer
 		// All screens exist simultaneously but only one is visible at a time
+
+		//created 3 screen controllers & add their konva groups to single layer
 		this.layer.add(this.menuController.getView().getGroup());
 		this.layer.add(this.gameController.getView().getGroup());
 		this.layer.add(this.resultsController.getView().getGroup());

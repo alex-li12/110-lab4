@@ -51,6 +51,17 @@ export class MenuScreenView implements View {
 		startButtonGroup.add(startButton);
 		startButtonGroup.add(startText);
 		startButtonGroup.on("click", onStartClick);
+
+		//Adding mouse cursor group functionality 
+		startButtonGroup.on("mouseover", () => {
+			this.group.getStage()?.container().style.setProperty("cursor", "pointer");
+		})
+
+		startButtonGroup.on("mouseout", () => {
+			this.group.getStage()?.container().style.removeProperty("cursor");
+		})
+
+
 		this.group.add(startButtonGroup);
 	}
 

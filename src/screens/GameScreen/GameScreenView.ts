@@ -47,20 +47,41 @@ export class GameScreenView implements View {
 		this.group.add(this.timerText);
 
 		// TODO: Task 2 - Load and display lemon image using Konva.Image.fromURL()
+		Konva.Image.fromURL("/lemon.png", (image) => {
+			image.setAttrs({
+				x: STAGE_WIDTH / 2 - 50,
+				y: STAGE_HEIGHT / 2 - 50,
+				width: 100,
+				height: 100,
+			});
+
+			image.on("click", onLemonClick); 
+
+			image.on("mouseover", () => {
+				this.group.getStage()?.container().style.setProperty("cursor", "pointer");
+			})
+
+			image.on("mouseout", () => {
+				this.group.getStage()?.container().style.removeProperty("cursor");
+			});
+			
+			this.lemonImage = image
+			this.group.add(image)
+		});
 		// Placeholder circle (remove this when implementing the image)
-		const placeholder = new Konva.Circle({
-			x: STAGE_WIDTH / 2,
-			y: STAGE_HEIGHT / 2,
-			radius: 50,
-			fill: "yellow",
-			stroke: "orange",
-			strokeWidth: 3,
-		})
-			.width(100)
-			.height(100);
-		placeholder.on("click", onLemonClick);
-		this.lemonImage = placeholder;
-		this.group.add(this.lemonImage);
+		// const placeholder = new Konva.Circle({
+		// 	x: STAGE_WIDTH / 2,
+		// 	y: STAGE_HEIGHT / 2,
+		// 	radius: 50,
+		// 	fill: "yellow",
+		// 	stroke: "orange",
+		// 	strokeWidth: 3,
+		// })
+		// 	.width(100)
+		// 	.height(100);
+		// placeholder.on("click", onLemonClick);
+		// this.lemonImage = placeholder;
+		// this.group.add(this.lemonImage);
 	}
 
 	/**
